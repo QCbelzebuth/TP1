@@ -36,6 +36,67 @@ Tableau tableaux(int i) {
 
 }
 
+int pgcdfonction() {
+
+    int i = 0;
+    Tableau t = tableaux(i);
+    int diviseur, min;
+    int pgcd = int(1);
+    for (i = 0; i < t.s; i++) {
+        if (t.numerateurs[i] <= t.denominateurs[i]) {
+            min = t.numerateurs[i];
+        }
+        else if (t.denominateurs[i] <= t.numerateurs[i]) {
+            min = t.denominateurs[i];
+        }
+
+
+        for (diviseur = 1; diviseur <= min; diviseur++) {
+
+
+            if (t.numerateurs[i] % diviseur == 0 && t.denominateurs[i] % diviseur == 0) {
+                pgcd = int(diviseur);
+            }
+        }
+
+    }
+
+    return pgcd;
+}
+
+
+struct Fraction {
+
+    long* val1_simplifier;
+    long* val2_simplifier;
+    int diviseur;
+    int pgcd;
+};
+Fraction f;
+Fraction fraction() {
+
+    f.pgcd = pgcdfonction();
+    int i = 0;
+    f.val1_simplifier = new long[t.s];
+    f.val2_simplifier = new long[t.s];
+    std::cout << "Saisir le diviseur: ";
+    std::cin >> f.diviseur;
+    while (f.diviseur == 0) {
+        std::cout << "Saisir a nouveau ";
+        std::cin >> f.diviseur;
+    }
+
+    for (i = 0; i < t.s; i++) {
+
+        f.val1_simplifier[i] = t.numerateurs[i] / long(f.diviseur);
+        f.val2_simplifier[i] = t.denominateurs[i] / long(f.diviseur);
+    }
+
+
+
+    return f;
+}
+
 int main()
 {
     std::cout << "Hello World!\n";
