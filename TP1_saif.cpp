@@ -10,7 +10,7 @@ struct Tableau {
 
 Tableau t;
 
-Tableau tableaux(int i) {
+Tableau remplirTableaux(int i) {
 
     int size = 0;
     std::cout << "Saisir combien de fractions vous voulez analyser: ";
@@ -36,10 +36,10 @@ Tableau tableaux(int i) {
 
 }
 
-int pgcdfonction() {
+int calculerPGCD() {
 
     int i = 0;
-    Tableau t = tableaux(i);
+    Tableau t = remplirTableaux(i);
     int diviseur, min;
     int pgcd = int(1);
     for (i = 0; i < t.s; i++) {
@@ -73,9 +73,9 @@ struct Fraction {
     int pgcd;
 };
 Fraction f;
-Fraction fraction() {
+Fraction simplifierFractions() {
 
-    f.pgcd = pgcdfonction();
+    f.pgcd = calculerPGCD();
     int i = 0;
     f.val1_simplifier = new long[t.s];
     f.val2_simplifier = new long[t.s];
@@ -97,10 +97,10 @@ Fraction fraction() {
     return f;
 }
 
-void afficherFraction() {
+void afficherFractions() {
 
 
-    Fraction f = fraction();
+    Fraction f = simplifierFractions();
     int i = 0;
 
     if (f.diviseur == f.pgcd) {
@@ -117,7 +117,10 @@ void afficherFraction() {
 
 int main()
 {
-    afficherFraction();
+    afficherFractions();
+    delete[] t.numerateurs;
+    delete[] t.denominateurs;
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
