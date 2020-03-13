@@ -97,9 +97,27 @@ Fraction fraction() {
     return f;
 }
 
+void afficherFraction() {
+
+
+    Fraction f = fraction();
+    int i = 0;
+
+    if (f.diviseur == f.pgcd) {
+        for (i = 0; i < t.s; i++) {
+            std::cout << "Simplification finale: " << t.numerateurs[i] << "/" << t.denominateurs[i] << ">>>" << f.val1_simplifier[i] << "/" << f.val2_simplifier[i] << std::endl;
+        }
+    }
+    else {
+        std::cout << "Le diviseur saisi n'est pas le plus grand commun diviseur de cette fraction";
+    }
+
+
+}
+
 int main()
 {
-    std::cout << "Hello World!\n";
+    afficherFraction();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
